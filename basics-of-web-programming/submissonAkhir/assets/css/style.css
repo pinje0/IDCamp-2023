@@ -1,0 +1,375 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    /* --navigation-background: #352f44; */
+    --navigation-background: #1b1c1e;
+    --primary-background: #5c5470;
+    --primary-text: #faf0e6;
+    --gradient-color: #b9b4c7;
+}
+
+body {
+    font-family: "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "游ゴシック",
+        "游ゴシック体", YuGothic, "Yu Gothic", "メイリオ", Meiryo,
+        "ＭＳ ゴシック", "MS Gothic", HiraKakuProN-W3, "TakaoExゴシック",
+        TakaoExGothic, "MotoyaLCedar", "Droid Sans Japanese", sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    /* background-color: var(--gradient-color); */
+    /* background-color: var(--primary-background); */
+    background-color: #303030;
+}
+
+/*? NAVBAR START */
+nav {
+    display: flex;
+    background-color: var(--navigation-background);
+    background-color: black;
+    justify-content: space-around;
+    /* padding: 20px 0; */
+    height: 70px;
+    align-items: center;
+    color: var(--primary-text);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    width: 40%;
+    justify-content: space-between;
+}
+
+nav .logo {
+    font-size: 20px;
+}
+
+nav .logo span {
+    letter-spacing: 3px;
+}
+
+nav ul li a {
+    color: var(--primary-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+nav ul li a:hover {
+    opacity: 0.5;
+}
+/** NAVBAR END */
+
+/*? Main Content START */
+main {
+    padding: 20px;
+    display: flex;
+    gap: 1.5rem;
+}
+
+#content {
+    flex: 5;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem 2rem;
+}
+
+article.card {
+    box-shadow: 1px 1px px 1px white;
+}
+
+aside {
+    flex: 1;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    color: var(--primary-text);
+    text-shadow: 2px 2px black;
+}
+
+h3 {
+    color: var(--primary-text);
+    text-shadow: 2px 2px black;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-text);
+}
+
+svg {
+    margin: 0;
+    padding: 0;
+}
+
+figure {
+    display: flex;
+}
+
+figcaption {
+    text-align: center;
+    color: var(--primary-text);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #000 !important;
+    font-weight: 600;
+    text-shadow: 1px 1px black;
+    background-color: var(--navigation-background);
+    margin-top: 0;
+}
+
+svg,
+footer {
+    vertical-align: middle;
+}
+
+p {
+    color: var(--primary-text);
+}
+
+.jumbotron {
+    font-size: 20px;
+    padding: 60px;
+    /* background-color: #00c8eb; */
+    background-image: url(../images/background-image-2.png);
+    text-align: center;
+    color: white;
+    height: 60vh;
+    display: flex;
+    justify-content: space-between;
+}
+.jumbotron-left {
+    display: flex;
+    flex: 1;
+    height: 40vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-jumbotron p:nth-child(2) {
+    font-size: 2em;
+}
+
+/* .jumbotron-right {
+    display: flex;
+    flex: 1;
+    height: 40vh;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* .jumbotron-right button {
+    display: inline-flex;
+    align-items: center;
+    padding: 15px 50px;
+    color: #fff;
+    text-decoration: none;
+    border: 3px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgba(250, 240, 230, 1);
+    transition: 0.25s ease-in-out;
+} */
+
+.jumbotron-right button:hover {
+    opacity: 0.7;
+}
+
+.jumbotron-right button a {
+    text-decoration: none;
+    /* color: var(--primary-text); */
+    color: #000;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.card {
+    /* background-color: var(--navigation-background); */
+    /* background-color: var(--primary-background); */
+    background-color: var(--navigation-background);
+}
+
+.card {
+    box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+#content img {
+    width: 100%;
+}
+
+#geografis img {
+    object-fit: cover;
+    height: 20%;
+}
+
+#wisata .card section img {
+    height: 10%;
+    width: 5px;
+}
+
+/** Main Content END */
+
+/*? Aside START */
+.profile header {
+    text-align: center;
+}
+
+.featured-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+
+aside section {
+    padding-left: 10px;
+}
+
+th {
+    color: var(--primary-text);
+    text-shadow: 1px 1px black;
+}
+
+td {
+    transition: 0.2s ease-in-out;
+}
+
+td:hover {
+    opacity: 0.5;
+}
+/** Aside END */
+
+/*? Hamburger Menu START */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
+    position: relative;
+    z-index: 3;
+}
+
+.menu-toggle input {
+    position: absolute;
+    width: 40px;
+    height: 28px;
+    left: -6px;
+    top: -3px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.5s;
+}
+
+/* Hamburger Animation */
+.menu-toggle span:nth-child(2) {
+    transform-origin: 0 0;
+}
+.menu-toggle span:nth-child(4) {
+    transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2) {
+    background-color: #fff;
+    transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-child(3) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.menu-toggle input:checked ~ span:nth-child(4) {
+    background-color: #fff;
+    transform: rotate(-45deg) translate(-1px, 0);
+}
+/** Humburger Menu END */
+
+/*? Responsive Breakpoint START */
+/* tablet */
+@media screen and (max-width: 768px) {
+    nav ul {
+        width: 50%;
+    }
+}
+/* mobile */
+@media screen and (max-width: 576px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav ul {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80%;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: var(--navigation-background);
+        z-index: 1;
+        transform: translateX(100%);
+        transition: all 1s;
+        opacity: 0;
+    }
+
+    nav ul.slide {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    main {
+        flex-flow: column nowrap;
+    }
+
+    main aside {
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        justify-content: center;
+    }
+
+    main aside {
+        align-self: stretch;
+    }
+
+    figure {
+        display: flex;
+    }
+
+    aside .profile img {
+        justify-content: center;
+    }
+}
+/** Responsive Breakpoint END */
