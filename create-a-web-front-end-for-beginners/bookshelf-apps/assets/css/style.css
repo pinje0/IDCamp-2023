@@ -163,6 +163,8 @@ main {
     padding: 16px;
     border-radius: 10px;
     background-color: rgba(37, 37, 37, 0.5);
+    color: var(--primary-text-color);
+    text-shadow: 2px 2px black;
 }
 
 .book-shelf-pending > h2 {
@@ -181,7 +183,7 @@ main {
 
 .book_shelf > .book_list > .book_item {
     padding: 8px 16px 16px 16px;
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 5px;
     margin: 10px 0;
 }
@@ -203,9 +205,20 @@ p {
     background-color: darkgreen;
     color: white;
 }
+.book_shelf > .book_list > .book_item > .action > .green:hover {
+    transition: cubic-bezier(0.07, 1.41, 0.82, 1.41) 0.2s;
+    transform: scale(1.02);
+    color: white;
+}
 
 .book_shelf > .book_list > .book_item > .action > .red {
     background-color: darkred;
+    color: white;
+}
+
+.book_shelf > .book_list > .book_item > .action > .red:hover {
+    transition: cubic-bezier(0.07, 1.41, 0.82, 1.41) 0.2s;
+    transform: scale(1.02);
     color: white;
 }
 
