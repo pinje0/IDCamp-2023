@@ -1,5 +1,15 @@
+/* 
+{
+*   id: string | number,
+*   title: string,
+*   author: string,
+*   year: number,
+*   isComplete: boolean,
+}
+*/
+
 (() => {
-    let todos = [];
+    let books = [];
 
     function addBook(event) {
         event.preventDefault();
@@ -12,11 +22,11 @@
             id: +new Date(),
             title: titleInput.value,
             author: authorInput.value,
-            year: yearInput.value,
+            year: parseInt(yearInput.value), // Convert year to number
             isComplete: isCompleteInput.checked,
         };
 
-        todos.push(newBook);
+        books.push(newBook);
         document.dispatchEvent(new Event('bookChanged'));
         resetForm();
     }
@@ -26,7 +36,7 @@
         const searchInput = document.querySelector('#searchBookTitle');
         const query = searchInput.value.toLowerCase();
 
-        const filteredBooks = todos.filter((book) =>
+        const filteredBooks = books.filter((book) =>
             book.title.toLowerCase().includes(query)
         );
 
@@ -35,20 +45,20 @@
 
     function toggleBookCompletion(event) {
         const bookId = Number(event.target.id);
-        const bookIndex = todos.findIndex((book) => book.id === bookId);
+        const bookIndex = books.findIndex((book) => book.id === bookId);
 
         if (bookIndex !== -1) {
-            todos[bookIndex].isComplete = !todos[bookIndex].isComplete;
+            books[bookIndex].isComplete = !books[bookIndex].isComplete;
             document.dispatchEvent(new Event('bookChanged'));
         }
     }
 
     function deleteBook(event) {
         const bookId = Number(event.target.id);
-        const bookIndex = todos.findIndex((book) => book.id === bookId);
+        const bookIndex = books.findIndex((book) => book.id === bookId);
 
         if (bookIndex !== -1) {
-            todos.splice(bookIndex, 1);
+            books.splice(bookIndex, 1);
             document.dispatchEvent(new Event('bookChanged'));
         }
     }
@@ -121,12 +131,12 @@
     }
 
     function saveData() {
-        localStorage.setItem('books', JSON.stringify(todos));
+        localStorage.setItem('books', JSON.stringify(books));
     }
 
     function loadBooks() {
         const storedBooks = localStorage.getItem('books');
-        todos = storedBooks ? JSON.parse(storedBooks) : [];
+        books = storedBooks ? JSON.parse(storedBooks) : [];
         document.dispatchEvent(new Event('bookChanged'));
     }
 
@@ -137,7 +147,7 @@
         inputForm.addEventListener('submit', addBook);
         searchForm.addEventListener('submit', searchBooks);
         document.addEventListener('bookChanged', () => {
-            renderBooks(todos);
+            renderBooks(books);
             saveData();
         });
 
