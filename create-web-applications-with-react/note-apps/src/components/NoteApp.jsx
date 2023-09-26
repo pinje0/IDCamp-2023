@@ -1,17 +1,66 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import NoteList from './NoteList';
 import { getInitialData } from '../utils';
+import NoteHeader from './NoteHeader';
+import NoteBody from './NoteBody';
 
-function NoteApp() {
-    const notes = getInitialData();
+class NoteApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            notes: getInitialData(),
+            nextId: 7,
+            searchQuery: '',
+        };
 
-    return (
-        <div className='note-app'>
-            <h2>Catatan Aktif</h2>
-            <NoteList notes={notes} />
-        </div>
-    );
+        this.onDeleteHandler = this.onDeleteHandler.bind(this);
+        this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
+        this.onSearchHandler = this.onSearchHandler.bind(this);
+    }
+
+    onDeleteHandler(id) {
+        const notes = this.state.notes.filter((note) => note.id !== id);
+        this.setState({ notes });
+    }
+
+    onAddNoteHandler({ title, body }) {
+        const newNote = {
+            id: this.state.nextId,
+            createdAt: +new Date(),
+            title,
+            body,
+            archived: false,
+        };
+
+        this.setState((prevState) => {
+            return {
+                notes: [...prevState.notes, newNote],
+                nextId: prevState.nextId + 1,
+            };
+        });
+    }
+
+    onSearchHandler(query) {
+        this.setState({ searchQuery: query });
+    }
+
+    render() {
+        const filteredNotes = this.state.notes.filter((note) =>
+            note.title
+                .toLowerCase()
+                .includes(this.state.searchQuery.toLowerCase())
+        );
+
+        return (
+            <div id='root' className='note-app'>
+                <NoteHeader onSearch={this.onSearchHandler} />
+                <NoteBody
+                    notes={filteredNotes}
+                    onDelete={this.onDeleteHandler}
+                    onAddNote={this.onAddNoteHandler}
+                />
+            </div>
+        );
+    }
 }
 
 export default NoteApp;
